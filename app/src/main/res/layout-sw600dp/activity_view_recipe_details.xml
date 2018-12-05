@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/recipe_detail_fragment"
+        android:name="com.kelvingabe.bakerapp.ViewRecipeDetailsFragment"
+        android:layout_width="@dimen/master_side_width"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/view_recipe_activity_content_margin"
+        android:layout_marginBottom="@dimen/view_recipe_activity_content_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_recipe_details" />
+
+    <FrameLayout
+        android:id="@+id/step_detail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/view_recipe_activity_content_margin"
+        android:layout_marginBottom="@dimen/view_recipe_activity_content_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/recipe_detail_fragment"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_step_detail" />
+</android.support.constraint.ConstraintLayout>

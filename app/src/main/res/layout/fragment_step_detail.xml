@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="StepDetailActivity">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/right_key_line_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/horizontal_key_line_1" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/left_key_line_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/horizontal_key_line_1" />
+
+
+        <ImageView
+            android:id="@+id/step_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/step_image_content_description"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/default_recipe" />
+
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/step_video"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#000"
+            android:visibility="invisible"
+            app:fastforward_increment="1000"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rewind_increment="1000"
+            app:srcCompat="@drawable/default_recipe" />
+
+
+        <TextView
+            android:id="@+id/step_instruction_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/right_key_line_guide"
+            app:layout_constraintStart_toStartOf="@+id/left_key_line_guide"
+            app:layout_constraintTop_toBottomOf="@+id/step_video"
+            tools:text="TextView" />
+
+        <Button
+            android:id="@+id/previous_button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/step_detail_fragment_button_margin"
+            android:text="@string/previous_button_text"
+            app:layout_constraintEnd_toStartOf="@+id/next_button"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@+id/left_key_line_guide"
+            app:layout_constraintTop_toBottomOf="@+id/step_instruction_text" />
+
+        <Button
+            android:id="@+id/next_button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/step_detail_fragment_button_margin"
+            android:text="@string/next_button_text"
+            app:layout_constraintEnd_toStartOf="@+id/right_key_line_guide"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/previous_button"
+            app:layout_constraintTop_toBottomOf="@+id/step_instruction_text" />
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="ViewRecipeDetailsActivity">
+
+        <TextView
+            android:id="@+id/recipe_ingredients_label_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/recipe_detail_fragment_margin"
+            android:text="@string/ingredient_label"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            app:layout_constraintStart_toStartOf="@+id/left_key_line_guide"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/recipe_ingredients_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/recipe_detail_fragment_margin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintEnd_toStartOf="@+id/right_key_line_guide"
+            app:layout_constraintStart_toStartOf="@+id/left_key_line_guide"
+            app:layout_constraintTop_toBottomOf="@+id/recipe_ingredients_label_text"
+            tools:text="Ingredients 1 \nIngredients 1 \nIngredients 1 \nIngredients 1 \n" />
+
+        <TextView
+            android:id="@+id/recipe_steps_label_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/recipe_detail_fragment_margin"
+            android:text="@string/recipe_steps_label"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            app:layout_constraintStart_toStartOf="@+id/left_key_line_guide"
+            app:layout_constraintTop_toBottomOf="@+id/recipe_ingredients_text" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recipe_steps_recycler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/right_key_line_guide"
+            app:layout_constraintStart_toStartOf="@+id/left_key_line_guide"
+            app:layout_constraintTop_toBottomOf="@+id/recipe_steps_label_text" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/left_key_line_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/horizontal_key_line_1" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/right_key_line_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/horizontal_key_line_1" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
