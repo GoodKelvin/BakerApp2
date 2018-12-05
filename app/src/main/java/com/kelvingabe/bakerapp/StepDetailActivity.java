@@ -9,8 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cr8ivley.io.bakerapp.ui.ViewRecipeDetailsActivity.STEP_LIST;
-import static cr8ivley.io.bakerapp.ui.ViewRecipeDetailsActivity.STEP_TO_DISPLAY_INDEX;
+import static com.kelvingabe.bakerapp.ViewRecipeDetailsActivity.STEP_LIST;
+import static com.kelvingabe.bakerapp.ViewRecipeDetailsActivity.STEP_TO_DISPLAY_INDEX;
 
 
 //Activity to display a list of step

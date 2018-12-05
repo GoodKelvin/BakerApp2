@@ -16,7 +16,7 @@ public class AppWidget extends AppWidgetProvider {
 
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.baker_app_widget);
-        Intent intent = new Intent(context, RecipeGridWidgetService.class);
+        Intent intent = new Intent(context, WidgetService.class);
         views.setRemoteAdapter(R.id.widget_grid_view, intent);
 
         // Instruct the widget manager to update the widget

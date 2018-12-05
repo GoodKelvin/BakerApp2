@@ -13,12 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.kelvingabe.bakerapp.adapter.StepAdapter;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cr8ivley.io.bakerapp.ui.adapter.StepAdapter;
-import cr8ivley.io.bakerapp.util.RecipeUtils;
 
-import static cr8ivley.io.bakerapp.ui.ViewRecipeDetailsActivity.RECIPE_TO_DISPLAY;
+import static com.kelvingabe.bakerapp.ViewRecipeDetailsActivity.RECIPE_TO_DISPLAY;
 
 //fragment to display a recipe's details
 // uses Butter knife  from Jake Wharton (http://jakewharton.github.io/butterknife/) to bind views
@@ -59,7 +59,7 @@ public class ViewRecipeDetailsFragment extends Fragment implements StepAdapter.S
         ButterKnife.bind(this, view);
 
         if (mRecipeToDisplay != null && mRecipeToDisplay.ingredients != null && mRecipeToDisplay.ingredients.size() > 0) {
-            mIngredientTextView.setText(RecipeUtils.ingredientsToNewLineString(mRecipeToDisplay.ingredients));
+            mIngredientTextView.setText(Appender.ingredientsToNewLineString(mRecipeToDisplay.ingredients));
         }
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
         StepAdapter stepAdapter = new StepAdapter(mRecipeToDisplay.steps, this);

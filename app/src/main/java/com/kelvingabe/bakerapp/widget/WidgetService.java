@@ -9,10 +9,12 @@ import com.kelvingabe.bakerapp.R;
 
 import java.util.List;
 
+import static com.kelvingabe.bakerapp.MainActivity.SELECTED_RECIPE_INGREDIENTS;
+
 public class WidgetService extends RemoteViewsService {// implements RecipeAsyncTask
 
 
-    public RecipeGridWidgetService() {
+    public WidgetService() {
 
     }
 

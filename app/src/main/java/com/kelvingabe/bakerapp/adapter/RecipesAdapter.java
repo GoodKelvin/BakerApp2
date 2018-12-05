@@ -19,15 +19,13 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cr8ivley.io.bakerapp.R;
-import cr8ivley.io.bakerapp.data.Recipe;
 
 
 //Class to handle data presentation of the recipes
 public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipeViewHolder> {
 
-    private final List<Recipe> mRecipeList;
-    private final RecipeSelectedListener mRecipeSelectedListener;
+    public List<Recipe> mRecipeList;
+    public RecipeSelectedListener mRecipeSelectedListener;
 
     public RecipesAdapter(List<Recipe> recipeList, RecipeSelectedListener recipeSelectedListener) {
         mRecipeList = recipeList;

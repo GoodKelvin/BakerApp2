@@ -15,12 +15,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class WidgetAdapter extends RecyclerView.Adapter<RecipeWidgetAdapter.RecipeViewHolder> {
+public class WidgetAdapter extends RecyclerView.Adapter<WidgetAdapter.RecipeViewHolder> {
 
     private final List<Recipe> mRecipeList;
     private final WidgetRecipeListener mWidgetRecipeListener;
 
-    public RecipeWidgetAdapter(List<Recipe> recipeList, WidgetRecipeListener widgetRecipeListener) {
+    public WidgetAdapter(List<Recipe> recipeList, WidgetRecipeListener widgetRecipeListener) {
         mRecipeList = recipeList;
         mWidgetRecipeListener = widgetRecipeListener;
     }
@@ -43,7 +43,7 @@ public class WidgetAdapter extends RecyclerView.Adapter<RecipeWidgetAdapter.Reci
         return mRecipeList.size();
     }
 
-    interface WidgetRecipeListener {
+    public interface WidgetRecipeListener {
         void recipeSelected(Recipe recipe);
     }
 

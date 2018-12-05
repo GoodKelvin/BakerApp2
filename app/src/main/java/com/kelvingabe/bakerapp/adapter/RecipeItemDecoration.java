@@ -6,17 +6,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 
-//Item decorator tfo the recipe list recycler view
 public class RecipeItemDecoration extends RecyclerView.ItemDecoration {
-    //
     private final int mItemOffset;
 
-    private RecipeItemDecoration(int itemOffset) {
-        mItemOffset = itemOffset;
+    private RecipeItemDecoration(int offset) {
+        mItemOffset = offset;
     }
 
-    public RecipeItemDecoration(Context context, int itemOffsetId) {
-        this(context.getResources().getDimensionPixelSize(itemOffsetId));
+    public RecipeItemDecoration(Context context, int offsetId) {
+        this(context.getResources().getDimensionPixelSize(offsetId));
     }
 
     @Override

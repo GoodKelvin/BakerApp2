@@ -10,9 +10,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.RemoteViews;
 
+import com.kelvingabe.bakerapp.AppAsyncTask;
 import com.kelvingabe.bakerapp.Ingredient;
 import com.kelvingabe.bakerapp.R;
 import com.kelvingabe.bakerapp.Recipe;
+import com.kelvingabe.bakerapp.adapter.WidgetAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +23,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_ID;
+import static com.kelvingabe.bakerapp.MainActivity.SELECTED_RECIPE_INGREDIENTS;
 
-public class WidgetActivity extends AppCompatActivity implements RecipeAsyncTask.RecipeLoadTaskComplete, RecipeWidgetAdapter.WidgetRecipeListener {
+public class WidgetActivity extends AppCompatActivity implements AppAsyncTask.RecipeLoadTaskComplete, WidgetAdapter.WidgetRecipeListener {
 
     private static final String TAG = "RWidgetConfigActivity";
     @BindView(R.id.widget_select_recipe)
@@ -52,14 +55,14 @@ public class WidgetActivity extends AppCompatActivity implements RecipeAsyncTask
         mRecipeRecyclerView.setLayoutManager(linearLayoutManager);
         mRecipeRecyclerView.addItemDecoration(lineItemDecoration);
         showLoadingState();
-        new RecipeAsyncTask(this).execute();
+        new AppAsyncTask(this).execute();
 
     }
 
     @Override
     public void recipesLoadCompleted(List<Recipe> recipeList) {
         if (recipeList != null && recipeList.size() > 0) {
-            RecipeWidgetAdapter recipeWidgetAdapter = new RecipeWidgetAdapter(recipeList, this);
+            WidgetAdapter recipeWidgetAdapter = new WidgetAdapter(recipeList, this);
             mRecipeRecyclerView.setAdapter(recipeWidgetAdapter);
             showList();
         } else {
@@ -73,7 +76,7 @@ public class WidgetActivity extends AppCompatActivity implements RecipeAsyncTask
         //get AppWidget manager and force update on widget
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.baker_app_widget);
-        Intent intent = new Intent(this, RecipeGridWidgetService.class);
+        Intent intent = new Intent(this, WidgetService.class);
 
         //convert list of recipe to list of strings. Parcelable is causing class not found error
         List<String> ingredientStringList = new ArrayList<>();

@@ -36,8 +36,8 @@ public class ViewRecipeDetailsActivity extends AppCompatActivity implements View
         Log.d("XXX", "Pane: " + mTwoPaneMode);
 
         Intent intent = getIntent();
-        if (intent != null && intent.getParcelableExtra(ViewRecipesActivity.SELECTED_RECIPE_INGREDIENTS) != null) {
-            mSelectedRecipe = intent.getParcelableExtra(ViewRecipesActivity.SELECTED_RECIPE_INGREDIENTS);
+        if (intent != null && intent.getParcelableExtra(MainActivity.SELECTED_RECIPE_INGREDIENTS) != null) {
+            mSelectedRecipe = intent.getParcelableExtra(MainActivity.SELECTED_RECIPE_INGREDIENTS);
 
         }
 

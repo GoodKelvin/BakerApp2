@@ -17,7 +17,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements RecipeAsyncTask.RecipeLoadTaskComplete, RecipesAdapter.RecipeSelectedListener {
+public class MainActivity extends AppCompatActivity implements AppAsyncTask.RecipeLoadTaskComplete, RecipesAdapter.RecipeSelectedListener {
 
     public static final String SELECTED_RECIPE_INGREDIENTS = "selected_recipe";
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements RecipeAsyncTask.R
         mRecipeRecyclerView.addItemDecoration(recipeDecoration);
         mRecipeRecyclerView.setHasFixedSize(true);
         showLoadingState();
-        new RecipeAsyncTask(this).execute();
+        new AppAsyncTask(this).execute();
 
     }
 

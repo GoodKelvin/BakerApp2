@@ -31,8 +31,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static cr8ivley.io.bakerapp.ui.ViewRecipeDetailsActivity.STEP_LIST;
-import static cr8ivley.io.bakerapp.ui.ViewRecipeDetailsActivity.STEP_TO_DISPLAY_INDEX;
+import static com.kelvingabe.bakerapp.ViewRecipeDetailsActivity.STEP_LIST;
+import static com.kelvingabe.bakerapp.ViewRecipeDetailsActivity.STEP_TO_DISPLAY_INDEX;
+
 
 //Fragment to display the step detail
 // uses picasso from square(http://square.github.io/picasso/) to load images
