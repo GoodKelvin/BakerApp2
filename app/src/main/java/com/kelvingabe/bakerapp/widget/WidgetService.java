@@ -9,7 +9,7 @@ import com.kelvingabe.bakerapp.R;
 
 import java.util.List;
 
-import static com.kelvingabe.bakerapp.MainActivity.SELECTED_RECIPE_INGREDIENTS;
+import static com.kelvingabe.bakerapp.MainActivity.SELECTED_RECIPE;
 
 public class WidgetService extends RemoteViewsService {// implements RecipeAsyncTask
 
@@ -29,7 +29,7 @@ public class WidgetService extends RemoteViewsService {// implements RecipeAsync
 
         RecipeGridViewFactory(Context context, Intent intent) {
             mContext = context;
-            mIngredientList = intent.getStringArrayListExtra(SELECTED_RECIPE_INGREDIENTS);
+            mIngredientList = intent.getStringArrayListExtra(SELECTED_RECIPE);
 
         }
 

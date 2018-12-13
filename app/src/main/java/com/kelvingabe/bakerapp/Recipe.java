@@ -34,23 +34,23 @@ public class Recipe implements Parcelable {
     @Json(name = "image")
     public final String imageUrl;
 
-    protected Recipe(Parcel in) {
-        id = in.readLong();
-        name = in.readString();
-        ingredients = in.createTypedArrayList(Ingredient.CREATOR);
-        steps = in.createTypedArrayList(Step.CREATOR);
-        servings = in.readString();
-        imageUrl = in.readString();
+    protected Recipe(Parcel inParcel) {
+        id = inParcel.readLong();
+        name = inParcel.readString();
+        ingredients = inParcel.createTypedArrayList(Ingredient.CREATOR);
+        steps = inParcel.createTypedArrayList(Step.CREATOR);
+        servings = inParcel.readString();
+        imageUrl = inParcel.readString();
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(id);
-        dest.writeString(name);
-        dest.writeTypedList(ingredients);
-        dest.writeTypedList(steps);
-        dest.writeString(servings);
-        dest.writeString(imageUrl);
+    public void writeToParcel(Parcel destinationParcel, int flags) {
+        destinationParcel.writeLong(id);
+        destinationParcel.writeString(name);
+        destinationParcel.writeTypedList(ingredients);
+        destinationParcel.writeTypedList(steps);
+        destinationParcel.writeString(servings);
+        destinationParcel.writeString(imageUrl);
     }
 
     @Override

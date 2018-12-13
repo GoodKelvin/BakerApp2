@@ -8,7 +8,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context="StepDetailActivity">
+        tools:context=".StepsActivity">
 
         <android.support.constraint.Guideline
             android:id="@+id/right_key_line_guide"

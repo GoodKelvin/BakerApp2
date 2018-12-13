@@ -23,9 +23,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_ID;
-import static com.kelvingabe.bakerapp.MainActivity.SELECTED_RECIPE_INGREDIENTS;
+import static com.kelvingabe.bakerapp.MainActivity.SELECTED_RECIPE;
 
-public class WidgetActivity extends AppCompatActivity implements AppAsyncTask.RecipeLoadTaskComplete, WidgetAdapter.WidgetRecipeListener {
+public class WidgetActivity extends AppCompatActivity implements AppAsyncTask.AsyncTaskComplete, WidgetAdapter.WidgetRecipeListener {
 
     private static final String TAG = "RWidgetConfigActivity";
     @BindView(R.id.widget_select_recipe)
@@ -60,7 +60,7 @@ public class WidgetActivity extends AppCompatActivity implements AppAsyncTask.Re
     }
 
     @Override
-    public void recipesLoadCompleted(List<Recipe> recipeList) {
+    public void asyncCompleted(List<Recipe> recipeList) {
         if (recipeList != null && recipeList.size() > 0) {
             WidgetAdapter recipeWidgetAdapter = new WidgetAdapter(recipeList, this);
             mRecipeRecyclerView.setAdapter(recipeWidgetAdapter);
@@ -83,12 +83,12 @@ public class WidgetActivity extends AppCompatActivity implements AppAsyncTask.Re
         for (Ingredient ingredient : recipe.ingredients) {
             ingredientStringList.add(ingredient.name);
         }
-        intent.putStringArrayListExtra(SELECTED_RECIPE_INGREDIENTS, (ArrayList<String>) ingredientStringList);
+        intent.putStringArrayListExtra(SELECTED_RECIPE, (ArrayList<String>) ingredientStringList);
         views.setTextViewText(R.id.widget_title_recipe_name, recipe.name);
         views.setRemoteAdapter(R.id.widget_grid_view, intent);
         appWidgetManager.updateAppWidget(mAppWidgetId, views);
         Intent resultIntent = new Intent();
-//        resultIntent.putExtra(SELECTED_RECIPE_INGREDIENTS,recipe);
+//        resultIntent.putExtra(SELECTED_RECIPE,recipe);
         resultIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
         setResult(RESULT_OK, resultIntent);
         finish();

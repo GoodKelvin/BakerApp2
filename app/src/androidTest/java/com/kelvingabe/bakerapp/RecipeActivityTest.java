@@ -13,17 +13,15 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import cr8ivley.io.bakerapp.ui.ViewRecipesActivity;
-
 @RunWith(AndroidJUnit4.class)
-public class ViewRecipeDetailsActivityTest {
+public class RecipeActivityTest {
 
 
     private final String recipe0thStep0thInstruction = "Recipe Introduction";
 
     @Rule
-    public ActivityTestRule<ViewRecipesActivity> viewRecipesActivityActivityTestRule
-            = new ActivityTestRule(ViewRecipesActivity.class);
+    public ActivityTestRule<RecipeActivity> recipeActivityActivityTestRule
+            = new ActivityTestRule(RecipeActivity.class);
 
     @Test
     public void recipeStepSelectionTest() {

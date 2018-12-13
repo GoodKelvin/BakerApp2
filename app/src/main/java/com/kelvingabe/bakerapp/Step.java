@@ -29,21 +29,21 @@ public class Step implements Parcelable {
     @Json(name = "thumbnailURL")
     public final String thumbnailURL;
 
-    protected Step(Parcel in) {
-        id = in.readLong();
-        shortDescription = in.readString();
-        description = in.readString();
-        videoURL = in.readString();
-        thumbnailURL = in.readString();
+    protected Step(Parcel inParcel) {
+        id = inParcel.readLong();
+        shortDescription = inParcel.readString();
+        description = inParcel.readString();
+        videoURL = inParcel.readString();
+        thumbnailURL = inParcel.readString();
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(id);
-        dest.writeString(shortDescription);
-        dest.writeString(description);
-        dest.writeString(videoURL);
-        dest.writeString(thumbnailURL);
+    public void writeToParcel(Parcel destinationParcel, int flags) {
+        destinationParcel.writeLong(id);
+        destinationParcel.writeString(shortDescription);
+        destinationParcel.writeString(description);
+        destinationParcel.writeString(videoURL);
+        destinationParcel.writeString(thumbnailURL);
     }
 
     @Override

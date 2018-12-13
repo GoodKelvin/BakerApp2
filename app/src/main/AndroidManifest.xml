@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="ViewRecipeDetailsActivity"
+            android:name=".RecipeActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -27,14 +27,14 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
+                android:value=".MainActivity" />
         </activity>
         <activity
-            android:name="StepDetailActivity"
+            android:name=".StepsActivity"
             android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ViewRecipeDetailsActivity" />
+                android:value=".RecipeActivity" />
         </activity>
 
         <receiver android:name="widget.AppWidget">

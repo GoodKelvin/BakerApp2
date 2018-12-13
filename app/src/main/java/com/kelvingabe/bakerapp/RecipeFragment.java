@@ -15,14 +15,14 @@ import android.widget.TextView;
 
 import com.kelvingabe.bakerapp.adapter.StepAdapter;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.kelvingabe.bakerapp.ViewRecipeDetailsActivity.RECIPE_TO_DISPLAY;
+import static com.kelvingabe.bakerapp.RecipeActivity.RECIPE_TO_DISPLAY;
 
-//fragment to display a recipe's details
-// uses Butter knife  from Jake Wharton (http://jakewharton.github.io/butterknife/) to bind views
-public class ViewRecipeDetailsFragment extends Fragment implements StepAdapter.StepSelectedListener {
+public class RecipeFragment extends Fragment implements StepAdapter.StepSelectedListener {
 
     private static final String TAG = "RecipeDetailsFragment";
     @BindView(R.id.recipe_ingredients_text)
@@ -33,7 +33,7 @@ public class ViewRecipeDetailsFragment extends Fragment implements StepAdapter.S
     private OnStepInteractionListener onStepInteractionListener;
     private Context mContext;
 
-    public ViewRecipeDetailsFragment() {
+    public RecipeFragment() {
 
     }
 
@@ -59,7 +59,7 @@ public class ViewRecipeDetailsFragment extends Fragment implements StepAdapter.S
         ButterKnife.bind(this, view);
 
         if (mRecipeToDisplay != null && mRecipeToDisplay.ingredients != null && mRecipeToDisplay.ingredients.size() > 0) {
-            mIngredientTextView.setText(Appender.ingredientsToNewLineString(mRecipeToDisplay.ingredients));
+            mIngredientTextView.setText(ingredientsToNewLineString(mRecipeToDisplay.ingredients));
         }
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
         StepAdapter stepAdapter = new StepAdapter(mRecipeToDisplay.steps, this);
@@ -105,5 +105,15 @@ public class ViewRecipeDetailsFragment extends Fragment implements StepAdapter.S
 
     public interface OnStepInteractionListener {
         void onStepInteraction(int stepIndex);
+    }
+
+    public String ingredientsToNewLineString(List<Ingredient> ingredientList) {
+        StringBuilder ingredientsStringBuilder = new StringBuilder("");
+        //Loop thr
+        for (Ingredient ingredient : ingredientList) {
+
+            ingredientsStringBuilder.append(ingredient.toString()).append(".\n\n");
+        }
+        return ingredientsStringBuilder.toString();
     }
 }
