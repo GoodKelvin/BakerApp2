@@ -4,7 +4,6 @@
     <string name="ingredient_label">Ingredients</string>
     <string name="recipe_steps_label">Steps</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="step_image">Step image</string>
     <string name="no_recipe_err_message">Recipes could not be loaded</string>
     <string name="loading_recipe_message">Loading recipe</string>

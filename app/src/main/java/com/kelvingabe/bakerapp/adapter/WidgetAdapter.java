@@ -15,43 +15,43 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class WidgetAdapter extends RecyclerView.Adapter<WidgetAdapter.RecipeViewHolder> {
-
-    private final List<Recipe> mRecipeList;
-    private final WidgetRecipeListener mWidgetRecipeListener;
+public class WidgetAdapter extends RecyclerView.Adapter<WidgetAdapter.ViewHolder> {
+    private final List<Recipe> recipeList;
+    private final WidgetRecipeListener recipeListener;
+    private String TAG = "WidgetAdapter";
 
     public WidgetAdapter(List<Recipe> recipeList, WidgetRecipeListener widgetRecipeListener) {
-        mRecipeList = recipeList;
-        mWidgetRecipeListener = widgetRecipeListener;
+        this.recipeList = recipeList;
+        recipeListener = widgetRecipeListener;
     }
 
     @NonNull
     @Override
-    public RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.widget_recipe_item, parent, false);
 
-        return new RecipeViewHolder(v);
+        return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
-        holder.bind(mRecipeList.get(position).name);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.bind(recipeList.get(position).name);
     }
 
     @Override
     public int getItemCount() {
-        return mRecipeList.size();
+        return recipeList.size();
     }
 
     public interface WidgetRecipeListener {
         void recipeSelected(Recipe recipe);
     }
 
-    class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.widget_recipe_name)
         TextView mRecipeNameText;
 
-        RecipeViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             ButterKnife.bind(this, itemView);
@@ -59,12 +59,11 @@ public class WidgetAdapter extends RecyclerView.Adapter<WidgetAdapter.RecipeView
 
         void bind(String name) {
             mRecipeNameText.setText(name);
-
         }
 
         @Override
         public void onClick(View v) {
-            mWidgetRecipeListener.recipeSelected(mRecipeList.get(getAdapterPosition()));
+            recipeListener.recipeSelected(recipeList.get(getAdapterPosition()));
         }
     }
 }

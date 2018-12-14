@@ -16,33 +16,28 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import cr8ivley.io.bakerapp.ui.ViewRecipesActivity;
 
 @RunWith(AndroidJUnit4.class)
-public class ViewRecipesActivityTest {
+public class MainActivityTest {
 
-    final String recipe0thName = "Nutella Pie";
+    final String brownies = "Brownies";
     @Rule
-    public ActivityTestRule<ViewRecipesActivity> viewRecipesActivityActivityTestRule
-            = new ActivityTestRule(ViewRecipesActivity.class);
+    public ActivityTestRule<MainActivity> viewRecipesActivityActivityTestRule
+            = new ActivityTestRule(MainActivity.class);
 
     @Test
-    public void recipeSelectionTest() {
-        //match data on the the recipe recycler view and perform a click on the 0th item
-        //gotten from https://stackoverflow.com/questions/28476507/using-espresso-to-click-view-inside-recyclerview-item?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+    public void testSelectionRecipe() {
         Espresso.onView(ViewMatchers.withId(R.id.recipe_recycler))
                 .perform(
-                        RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click())
+                        RecyclerViewActions.actionOnItemAtPosition(1, ViewActions.click())
                 );
 
-        //expected result is that the appbar displays the recipe name
-        //got this idea from http://blog.sqisland.com/2015/05/espresso-match-toolbar-title.html
         Espresso.onView(
                 Matchers.allOf(
                         ViewMatchers.withParent(ViewMatchers.isAssignableFrom(Toolbar.class))
                         , ViewMatchers.isAssignableFrom(TextView.class)
                 )
-        ).check(ViewAssertions.matches(ViewMatchers.withText(recipe0thName)));
+        ).check(ViewAssertions.matches(ViewMatchers.withText(brownies)));
 
     }
 }

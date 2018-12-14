@@ -17,27 +17,25 @@ import org.junit.runner.RunWith;
 public class RecipeActivityTest {
 
 
-    private final String recipe0thStep0thInstruction = "Recipe Introduction";
+    private final String string = "Recipe Introduction";
 
     @Rule
     public ActivityTestRule<RecipeActivity> recipeActivityActivityTestRule
             = new ActivityTestRule(RecipeActivity.class);
 
     @Test
-    public void recipeStepSelectionTest() {
+    public void testSelection() {
 
-        //perform click on recipe
         Espresso.onView(ViewMatchers.withId(R.id.recipe_recycler))
                 .perform(
                         RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click())
                 );
 
-        //perform click on step
         Espresso.onView(ViewMatchers.withId(R.id.recipe_steps_recycler))
                 .perform(
                         RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click())
                 );
 
-        Espresso.onView(ViewMatchers.withId(R.id.step_instruction_text)).check(ViewAssertions.matches(ViewMatchers.withText(recipe0thStep0thInstruction)));
+        Espresso.onView(ViewMatchers.withId(R.id.step_instruction_text)).check(ViewAssertions.matches(ViewMatchers.withText(string)));
     }
 }
