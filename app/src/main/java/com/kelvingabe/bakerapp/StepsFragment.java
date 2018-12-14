@@ -31,8 +31,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.kelvingabe.bakerapp.RecipeActivity.STEP_TO_DISPLAY_INDEX;
 import static com.kelvingabe.bakerapp.RecipeActivity._ARRAY;
+import static com.kelvingabe.bakerapp.RecipeActivity._INDEX;
 
 
 public class StepsFragment extends Fragment implements View.OnClickListener {
@@ -73,14 +73,14 @@ public class StepsFragment extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         if (getArguments() != null && getArguments().getParcelableArrayList(_ARRAY) != null) {
             stepList = getArguments().getParcelableArrayList(_ARRAY);
-            stepToDisplayIndex = getArguments().getInt(STEP_TO_DISPLAY_INDEX);
+            stepToDisplayIndex = getArguments().getInt(_INDEX);
             Log.d(TAG, "StepToDisplay " + stepToDisplayIndex);
         }
 
         if (savedInstanceState != null) {
             mMediaWindowIndex = savedInstanceState.getInt(MEDIA_WINDOW_INDEX);
             mMediaPosition = savedInstanceState.getLong(MEDIA_POSITION);
-            stepToDisplayIndex = savedInstanceState.getInt(STEP_TO_DISPLAY_INDEX);
+            stepToDisplayIndex = savedInstanceState.getInt(_INDEX);
             Log.d(TAG, "CRT " + mMediaWindowIndex + " " + mMediaPosition);
 
         }
@@ -145,7 +145,7 @@ public class StepsFragment extends Fragment implements View.OnClickListener {
         outState.putLong(MEDIA_POSITION, mMediaPosition);
         outState.putInt(MEDIA_WINDOW_INDEX, mMediaWindowIndex);
         outState.putBoolean(MEDIA_PLAY_ON_READY, mMediaPlayOnReady);
-        outState.putInt(STEP_TO_DISPLAY_INDEX, stepToDisplayIndex);
+        outState.putInt(_INDEX, stepToDisplayIndex);
         super.onSaveInstanceState(outState);
     }
 

@@ -9,8 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.kelvingabe.bakerapp.RecipeActivity.STEP_TO_DISPLAY_INDEX;
 import static com.kelvingabe.bakerapp.RecipeActivity._ARRAY;
+import static com.kelvingabe.bakerapp.RecipeActivity._INDEX;
 
 
 public class StepsActivity extends AppCompatActivity {
@@ -27,7 +27,7 @@ public class StepsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null && intent.getParcelableArrayListExtra(_ARRAY) != null) {
             steps = intent.getParcelableArrayListExtra(_ARRAY);
-            stepsIndex = intent.getIntExtra(STEP_TO_DISPLAY_INDEX, 0);
+            stepsIndex = intent.getIntExtra(_INDEX, 0);
 
         }
 
@@ -46,7 +46,7 @@ public class StepsActivity extends AppCompatActivity {
             StepsFragment stepsFragment = new StepsFragment();
             Bundle bundle = new Bundle();
             bundle.putParcelableArrayList(_ARRAY, (ArrayList<Step>) steps);
-            bundle.putInt(STEP_TO_DISPLAY_INDEX, stepsIndex);
+            bundle.putInt(_INDEX, stepsIndex);
             stepsFragment.setArguments(bundle);
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.add(R.id.step_fragment, stepsFragment);

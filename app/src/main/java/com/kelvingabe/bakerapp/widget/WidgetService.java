@@ -11,25 +11,26 @@ import java.util.List;
 
 import static com.kelvingabe.bakerapp.MainActivity.SELECTED_RECIPE;
 
-public class WidgetService extends RemoteViewsService {// implements RecipeAsyncTask
-
+public class WidgetService extends RemoteViewsService {
+    Context context;
 
     public WidgetService() {
-
+        context = getApplicationContext();
     }
 
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
-        return new RecipeGridViewFactory(getApplicationContext(), intent);
+        context = getApplicationContext();
+        return new ViewFactory(context, intent);
     }
 
-    class RecipeGridViewFactory implements RemoteViewsService.RemoteViewsFactory {
-        final Context mContext;
-        List<String> mIngredientList;
+    class ViewFactory implements RemoteViewsService.RemoteViewsFactory {
+        final Context c;
+        List<String> ingredients;
 
-        RecipeGridViewFactory(Context context, Intent intent) {
-            mContext = context;
-            mIngredientList = intent.getStringArrayListExtra(SELECTED_RECIPE);
+        ViewFactory(Context context, Intent intent) {
+            c = context;
+            ingredients = intent.getStringArrayListExtra(SELECTED_RECIPE);
 
         }
 
@@ -44,18 +45,18 @@ public class WidgetService extends RemoteViewsService {// implements RecipeAsync
 
         @Override
         public void onDestroy() {
-            mIngredientList = null;
+            ingredients = null;
         }
 
         @Override
         public int getCount() {
-            return mIngredientList.size();
+            return ingredients.size();
         }
 
         @Override
         public RemoteViews getViewAt(int position) {
-            String ingredient = mIngredientList.get(position);
-            RemoteViews views = new RemoteViews(mContext.getPackageName(), R.layout.widget_ingredient_item);
+            String ingredient = ingredients.get(position);
+            RemoteViews views = new RemoteViews(c.getPackageName(), R.layout.widget_ingredient_item);
             views.setTextViewText(R.id.widget_ingredient_name, ingredient);
             return views;
         }

@@ -27,7 +27,6 @@ import static com.kelvingabe.bakerapp.MainActivity.SELECTED_RECIPE;
 
 public class WidgetActivity extends AppCompatActivity implements AppAsyncTask.AsyncTaskComplete, WidgetAdapter.WidgetRecipeListener {
 
-    private static final String TAG = "RWidgetConfigActivity";
     @BindView(R.id.widget_select_recipe)
     RecyclerView mRecipeRecyclerView;
 
@@ -54,7 +53,7 @@ public class WidgetActivity extends AppCompatActivity implements AppAsyncTask.As
                 mRecipeRecyclerView.getContext(), linearLayoutManager.getOrientation());
         mRecipeRecyclerView.setLayoutManager(linearLayoutManager);
         mRecipeRecyclerView.addItemDecoration(lineItemDecoration);
-        showLoadingState();
+        showLoading();
         new AppAsyncTask(this).execute();
 
     }
@@ -66,19 +65,17 @@ public class WidgetActivity extends AppCompatActivity implements AppAsyncTask.As
             mRecipeRecyclerView.setAdapter(recipeWidgetAdapter);
             showList();
         } else {
-            showEmptyState();
+            showEmpty();
         }
 
     }
 
     @Override
     public void recipeSelected(Recipe recipe) {
-        //get AppWidget manager and force update on widget
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.baker_app_widget);
         Intent intent = new Intent(this, WidgetService.class);
 
-        //convert list of recipe to list of strings. Parcelable is causing class not found error
         List<String> ingredientStringList = new ArrayList<>();
         for (Ingredient ingredient : recipe.ingredients) {
             ingredientStringList.add(ingredient.name);
@@ -88,19 +85,20 @@ public class WidgetActivity extends AppCompatActivity implements AppAsyncTask.As
         views.setRemoteAdapter(R.id.widget_grid_view, intent);
         appWidgetManager.updateAppWidget(mAppWidgetId, views);
         Intent resultIntent = new Intent();
-//        resultIntent.putExtra(SELECTED_RECIPE,recipe);
+
         resultIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
         setResult(RESULT_OK, resultIntent);
         finish();
     }
 
-    private void showLoadingState() {
+    private void showLoading() {
         mRecipeRecyclerView.setVisibility(View.INVISIBLE);
         mEmptyState.setVisibility(View.INVISIBLE);
         mLoadingState.setVisibility(View.VISIBLE);
     }
 
-    private void showEmptyState() {
+    private void showEmpty() {
+
         mRecipeRecyclerView.setVisibility(View.INVISIBLE);
         mLoadingState.setVisibility(View.INVISIBLE);
         mEmptyState.setVisibility(View.VISIBLE);

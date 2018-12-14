@@ -24,14 +24,14 @@ import static com.kelvingabe.bakerapp.RecipeActivity.RECIPE_TO_DISPLAY;
 
 public class RecipeFragment extends Fragment implements StepAdapter.StepSelectedListener {
 
-    private static final String TAG = "RecipeDetailsFragment";
+    private static final String TAG = "RecipeFragment";
     @BindView(R.id.recipe_ingredients_text)
-    TextView mIngredientTextView;
+    TextView ingredientTextView;
     @BindView(R.id.recipe_steps_recycler)
-    RecyclerView mStepsRecyclerView;
-    private Recipe mRecipeToDisplay;
+    RecyclerView stepsRecyclerView;
+    private Recipe recipe;
     private OnStepInteractionListener onStepInteractionListener;
-    private Context mContext;
+    private Context context;
 
     public RecipeFragment() {
 
@@ -44,13 +44,13 @@ public class RecipeFragment extends Fragment implements StepAdapter.StepSelected
 
         if (savedInstanceState == null) {
             if (getArguments() != null && getArguments().getParcelable(RECIPE_TO_DISPLAY) != null) {
-                mRecipeToDisplay = getArguments().getParcelable(RECIPE_TO_DISPLAY);
+                recipe = getArguments().getParcelable(RECIPE_TO_DISPLAY);
 
             }
         } else {
-            mRecipeToDisplay = savedInstanceState.getParcelable(RECIPE_TO_DISPLAY);
+            recipe = savedInstanceState.getParcelable(RECIPE_TO_DISPLAY);
         }
-        Log.d(TAG, "Created " + mRecipeToDisplay);
+        Log.d(TAG, "Created " + recipe);
     }
 
     @Override
@@ -58,24 +58,24 @@ public class RecipeFragment extends Fragment implements StepAdapter.StepSelected
         View view = inflater.inflate(R.layout.fragment_recipe_details, container, false);
         ButterKnife.bind(this, view);
 
-        if (mRecipeToDisplay != null && mRecipeToDisplay.ingredients != null && mRecipeToDisplay.ingredients.size() > 0) {
-            mIngredientTextView.setText(ingredientsToNewLineString(mRecipeToDisplay.ingredients));
+        if (recipe != null && recipe.ingredients != null && recipe.ingredients.size() > 0) {
+            ingredientTextView.setText(ingredientToNewLine(recipe.ingredients));
         }
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
-        StepAdapter stepAdapter = new StepAdapter(mRecipeToDisplay.steps, this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+        StepAdapter stepAdapter = new StepAdapter(recipe.steps, this);
         DividerItemDecoration lineItemDecoration = new DividerItemDecoration(
-                mStepsRecyclerView.getContext(), linearLayoutManager.getOrientation());
-        mStepsRecyclerView.setLayoutManager(linearLayoutManager);
-        mStepsRecyclerView.addItemDecoration(lineItemDecoration);
-        mStepsRecyclerView.setAdapter(stepAdapter);
-        mStepsRecyclerView.setFocusable(false);
+                stepsRecyclerView.getContext(), linearLayoutManager.getOrientation());
+        stepsRecyclerView.setLayoutManager(linearLayoutManager);
+        stepsRecyclerView.addItemDecoration(lineItemDecoration);
+        stepsRecyclerView.setAdapter(stepAdapter);
+        stepsRecyclerView.setFocusable(false);
         return view;
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelable(RECIPE_TO_DISPLAY, mRecipeToDisplay);
+        outState.putParcelable(RECIPE_TO_DISPLAY, recipe);
     }
 
     @Override
@@ -87,7 +87,7 @@ public class RecipeFragment extends Fragment implements StepAdapter.StepSelected
             throw new RuntimeException(context.toString()
                     + " must implement OnStepSelectedFragmentListener");
         }
-        mContext = context;
+        this.context = context;
 
     }
 
@@ -107,9 +107,8 @@ public class RecipeFragment extends Fragment implements StepAdapter.StepSelected
         void onStepInteraction(int stepIndex);
     }
 
-    public String ingredientsToNewLineString(List<Ingredient> ingredientList) {
+    public String ingredientToNewLine(List<Ingredient> ingredientList) {
         StringBuilder ingredientsStringBuilder = new StringBuilder("");
-        //Loop thr
         for (Ingredient ingredient : ingredientList) {
 
             ingredientsStringBuilder.append(ingredient.toString()).append(".\n\n");
