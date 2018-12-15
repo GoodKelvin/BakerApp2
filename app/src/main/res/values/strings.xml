@@ -1,15 +1,15 @@
 <resources>
-    <string name="app_name">Baker App</string>
-    <string name="recipe_image_content_description">Recipe Image</string>
+    <string name="app_name">BakerApp</string>
+    <string name="recipe_img_content_description">Recipe Image</string>
     <string name="ingredient_label">Ingredients</string>
-    <string name="recipe_steps_label">Steps</string>
+    <string name="steps_label">Steps</string>
 
-    <string name="step_image">Step image</string>
-    <string name="no_recipe_err_message">Recipes could not be loaded</string>
-    <string name="loading_recipe_message">Loading recipe</string>
-    <string name="step_image_content_description">Step Image</string>
-    <string name="previous_button_text">Previous</string>
-    <string name="next_button_text">Next</string>
-    <string name="pause_button_content_description">Pause button</string>
-    <string name="play_button_content_description">Play button</string>
+    <string name="step_image">Steps image</string>
+    <string name="recipe_error">Not loaded</string>
+    <string name="loading">Loading</string>
+    <string name="step_content_description">Step Image</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="pause">Pause button</string>
+    <string name="play">Play button</string>
 </resources>

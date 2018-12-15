@@ -10,7 +10,7 @@
         android:id="@+id/widget_title_recipe_name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/widget_header_height"
-        android:background="@color/colorPrimaryDarkScreenBg"
+        android:background="@color/colorPrimaryDarkScreen"
         android:gravity="center_vertical"
         android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
         tool:text="Recipe name" />
