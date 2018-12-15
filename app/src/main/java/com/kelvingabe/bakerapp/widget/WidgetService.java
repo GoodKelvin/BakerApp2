@@ -15,13 +15,13 @@ public class WidgetService extends RemoteViewsService {
     Context context;
 
     public WidgetService() {
-        context = getApplicationContext();
+
     }
 
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
-        context = getApplicationContext();
-        return new ViewFactory(context, intent);
+        //context = getApplicationContext();
+        return new ViewFactory(getApplicationContext(), intent);
     }
 
     class ViewFactory implements RemoteViewsService.RemoteViewsFactory {
