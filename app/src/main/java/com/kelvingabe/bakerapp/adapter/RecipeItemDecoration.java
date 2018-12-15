@@ -7,10 +7,10 @@ import android.view.View;
 
 
 public class RecipeItemDecoration extends RecyclerView.ItemDecoration {
-    private final int mItemOffset;
+    private final int offset;
 
     private RecipeItemDecoration(int offset) {
-        mItemOffset = offset;
+        this.offset = offset;
     }
 
     public RecipeItemDecoration(Context context, int offsetId) {
@@ -20,6 +20,6 @@ public class RecipeItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
-        outRect.set(mItemOffset, mItemOffset, mItemOffset, mItemOffset);
+        outRect.set(offset, offset, offset, offset);
     }
 }

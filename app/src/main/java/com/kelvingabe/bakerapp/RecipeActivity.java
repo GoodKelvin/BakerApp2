@@ -24,7 +24,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeFragment.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_recipe_details);
+        setContentView(R.layout.activity_recipe);
         ActionBar actionBar = getSupportActionBar();
 
         FrameLayout secondPaneFrame = findViewById(R.id.step_detail);

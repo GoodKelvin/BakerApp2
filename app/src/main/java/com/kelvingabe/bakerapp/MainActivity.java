@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements AppAsyncTask.Asyn
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_recipes);
+        setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         boolean isSmallestWidth600 = getResources().getBoolean(R.bool.is_sw600);
 

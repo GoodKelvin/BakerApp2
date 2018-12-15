@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +54,7 @@ public class StepsFragment extends Fragment implements View.OnClickListener {
     private String TAG = "StepsFragment";
     private int stepToDisplayIndex;
     private List<Step> stepList;
-    //variables to store the position of player before it is destroyed
+
     private int mMediaWindowIndex;
     private long mMediaPosition;
     private boolean mMediaPlayOnReady = true;
@@ -74,14 +73,12 @@ public class StepsFragment extends Fragment implements View.OnClickListener {
         if (getArguments() != null && getArguments().getParcelableArrayList(_ARRAY) != null) {
             stepList = getArguments().getParcelableArrayList(_ARRAY);
             stepToDisplayIndex = getArguments().getInt(_INDEX);
-            Log.d(TAG, "StepToDisplay " + stepToDisplayIndex);
         }
 
         if (savedInstanceState != null) {
             mMediaWindowIndex = savedInstanceState.getInt(MEDIA_WINDOW_INDEX);
             mMediaPosition = savedInstanceState.getLong(MEDIA_POSITION);
             stepToDisplayIndex = savedInstanceState.getInt(_INDEX);
-            Log.d(TAG, "CRT " + mMediaWindowIndex + " " + mMediaPosition);
 
         }
 
@@ -90,7 +87,7 @@ public class StepsFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_step_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_steps, container, false);
         ButterKnife.bind(this, view);
         if (nextButton != null && previousButton != null) {
             nextButton.setOnClickListener(this);
@@ -227,9 +224,9 @@ public class StepsFragment extends Fragment implements View.OnClickListener {
             if (!TextUtils.isEmpty(stepList.get(stepToDisplayIndex).thumbnailURL)) {
 
                 Picasso.get().load(Uri.parse(stepList.get(stepToDisplayIndex).thumbnailURL))
-                        .error(R.drawable.ic_error_red_185dp)
+                        .error(R.drawable.ic_error_185dp)
                         .into(stepImageView);
-            } else // image is not available show default image
+            } else
             {
                 Picasso.get().load(R.drawable.default_recipe).into(stepImageView);
             }

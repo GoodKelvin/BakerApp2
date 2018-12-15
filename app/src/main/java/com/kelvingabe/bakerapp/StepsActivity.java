@@ -22,7 +22,7 @@ public class StepsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         boolean isLandscape = getResources().getBoolean(R.bool.is_landscape);
-        setContentView(R.layout.activity_step_detail);
+        setContentView(R.layout.activity_steps);
 
         Intent intent = getIntent();
         if (intent != null && intent.getParcelableArrayListExtra(_ARRAY) != null) {

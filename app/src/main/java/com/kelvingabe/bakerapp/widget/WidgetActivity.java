@@ -41,7 +41,7 @@ public class WidgetActivity extends AppCompatActivity implements AppAsyncTask.As
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recipe_widget_config);
+        setContentView(R.layout.activity_widget);
         ButterKnife.bind(this);
         Intent intent = getIntent();
         if (intent != null && intent.getExtras() != null) {
@@ -73,7 +73,7 @@ public class WidgetActivity extends AppCompatActivity implements AppAsyncTask.As
     @Override
     public void recipeSelected(Recipe recipe) {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
-        RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.baker_app_widget);
+        RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.app_widget);
         Intent intent = new Intent(this, WidgetService.class);
 
         List<String> ingredientStringList = new ArrayList<>();

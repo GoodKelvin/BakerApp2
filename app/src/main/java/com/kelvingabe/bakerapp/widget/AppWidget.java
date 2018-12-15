@@ -13,7 +13,7 @@ public class AppWidget extends AppWidgetProvider {
 
     private static void updateWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
 
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.baker_app_widget);
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.app_widget);
         Intent intent = new Intent(context, WidgetService.class);
         views.setRemoteAdapter(R.id.widget_grid_view, intent);
         appWidgetManager.updateAppWidget(appWidgetId, views);

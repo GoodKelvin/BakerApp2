@@ -55,7 +55,7 @@ public class RecipeFragment extends Fragment implements StepAdapter.StepSelected
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_recipe_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_recipe, container, false);
         ButterKnife.bind(this, view);
 
         if (recipe != null && recipe.ingredients != null && recipe.ingredients.size() > 0) {

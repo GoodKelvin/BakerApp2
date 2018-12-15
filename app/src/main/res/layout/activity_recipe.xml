@@ -6,4 +6,4 @@
     android:name="com.kelvingabe.bakerapp.ViewRecipeDetailsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout="@layout/fragment_recipe_details" />
+    tools:layout="@layout/fragment_recipe" />
